@@ -1,0 +1,16 @@
+OPENGL context : 
+
+An OpenGL context is a driver-managed software state container that stores rendering configuration and references to GPU resources, 
+which the driver translates into GPU commands and hardware state during rendering.
+
+The OpenGL context is driver-internal software state, not a DLL you link,
+ not part of GLFW or GLAD, and not written in your project’s language—it is implemented inside the GPU driver (mostly in C/C++), 
+ and GLFW merely requests its creation.
+
+ OpenGL is a graphics API whose implementation is provided by GPU manufacturers inside the graphics driver. 
+ My application does not include OpenGL source code. 
+ GLFW is a windowing library that communicates with OS-specific APIs to create a window and request an OpenGL context from the driver. 
+ GLAD loads the OpenGL function pointers from the driver, and my C++ code calls those functions to issue rendering commands to the GPU.
+
+GLAD and GLFW difference :
+     GLFW requests and manages an OpenGL context from the OS/driver, and GLAD loads function pointers that allow my code to call OpenGL functions which operate on the currently active OpenGL context.
